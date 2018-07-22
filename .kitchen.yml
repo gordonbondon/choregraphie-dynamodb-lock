@@ -1,0 +1,37 @@
+---
+driver:
+  name: dokken
+  chef_version: <%= ENV['CHEF_VERSION'] || 'current' %>
+
+transport:
+  name: dokken
+
+provisioner:
+  name: dokken
+  deprecations_as_errors: true
+  attributes:
+    ec2:
+      aws_access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+      aws_secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+      aws_session_token: <%= ENV['AWS_SESSION_TOKEN'] %>
+      placement_availability_zone: <%= ENV['AWS_AZ'] || 'us-west-2a' %>
+
+platforms:
+- name: centos-7
+  driver:
+    image: dokken/centos-7
+
+suites:
+  - name: default
+    run_list:
+      - recipe[test]
+
+  - name: aws
+    run_list:
+      - recipe[test::aws]
+      - recipe[test]
+
+  - name: aws2
+    run_list:
+      - recipe[test::aws]
+      - recipe[test]
