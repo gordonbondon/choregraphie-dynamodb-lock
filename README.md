@@ -1,6 +1,6 @@
 # choregraphie_dynamodb_lock Cookbook
 
-[![Build Status](https://travis-ci.org/gordonbondon/choregraphie-dynamodb-lock.svg?branch=master)](https://travis-ci.org/gordonbondon/choregraphie-dynamodb-lock)
+[![Build Status](https://travis-ci.org/gordonbondon/choregraphie-dynamodb-lock.svg?branch=master)](https://travis-ci.org/gordonbondon/choregraphie-dynamodb-lock) [![Cookbook Version](https://img.shields.io/cookbook/v/choregraphie_dynamodb_lock.svg)](https://supermarket.chef.io/cookbooks/choregraphie_dynamodb_lock)
 
 This cookbook provides AWS DynamoDB lock primitive for [choregraphie](https://github.com/criteo-cookbooks/choregraphie) cookbook  
 
