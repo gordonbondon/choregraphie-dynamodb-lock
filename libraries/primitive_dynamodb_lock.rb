@@ -2,7 +2,7 @@ require 'marloss'
 
 module Choregraphie
   class DynamodbLock < Primitive
-    def initialize(options = {}, &block)
+    def initialize(options = {})
       @options = Mash.new(options)
 
       validate!(:table, String)
@@ -34,7 +34,7 @@ module Choregraphie
 
     def wait_until(action, opts = {})
       Chef::Log.info "Will #{action} the lock #{@options[:id]}"
-      success = 0.upto(opts[:max_failures] || Float::INFINITY).any? do |tries|
+      success = 0.upto(opts[:max_failures] || Float::INFINITY).any? do
         begin
           yield || backoff
         rescue => e
@@ -52,13 +52,12 @@ module Choregraphie
     end
 
     def register(choregraphie)
-
       choregraphie.before do
         wait_until(:enter) { semaphore.enter }
       end
 
       choregraphie.finish do
-        # hack: We can ignore failure there since it is only to release
+        # HACK: We can ignore failure there since it is only to release
         # the lock. If there is a temporary failure, we can wait for the
         # next run to release the lock without compromising safety.
         # The reason we have to be a bit more relaxed here, is that all

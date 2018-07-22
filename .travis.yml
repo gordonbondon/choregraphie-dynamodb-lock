@@ -8,7 +8,6 @@ addons:
     packages:
       - chefdk
 
-# Don't `bundle install` which takes about 1.5 mins
 install: echo "skip bundle install"
 
 branches:
@@ -20,5 +19,6 @@ before_script:
   - chef --version
   - cookstyle --version
   - foodcritic --version
+  - chef exec bundle install
 
 script: delivery local all
