@@ -14,4 +14,4 @@ chef_version '>= 12.6' if respond_to?(:chef_version)
 end
 
 depends 'choregraphie'
-gem 'marloss'
+gem 'marloss', '>= 0.4.0'

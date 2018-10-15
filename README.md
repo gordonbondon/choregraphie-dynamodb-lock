@@ -14,7 +14,8 @@ Check choregraphie [documentation](https://github.com/criteo-cookbooks/choregrap
 `:hash_key` - (Required) DynamoDB table hash key name  
 `:id` - (Required) unique id for lock name  
 `:create_table` - (Optional) create DynamoDB table if it's missing. Default: `false`  
-`:ttl` - (Optional) TTL for lock befire it expires, in seconds. Default: `30`  
+`:ttl` - (Optional) TTL for lock before it expires, in seconds. Default: `30`  
+`:expires_key` - (Optional) Name of TTL attribute in table . Default: `Expires`  
 
 Example:
 ```ruby
@@ -44,11 +45,6 @@ end
 ### Chef
 
 - Chef 12.6+
-
-### DynamoDB
-
-- If you create DynamoDB table outside of lock primitive, Time to live attribute
-should be named `Expires`.
 
 # References
 * https://github.com/eredi93/marloss
