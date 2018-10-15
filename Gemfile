@@ -6,6 +6,11 @@
 
 source 'https://rubygems.org'
 
+gem 'berkshelf'
+gem 'chefspec'
+gem 'cookstyle'
 gem 'community_cookbook_releaser'
+gem 'foodcritic'
+gem 'marloss', '>= 0.4.0'
+gem 'rspec-core', '< 3.8'
 gem 'stove'
-gem 'marloss'

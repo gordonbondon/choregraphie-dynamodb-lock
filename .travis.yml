@@ -21,4 +21,4 @@ before_script:
   - foodcritic --version
   - chef exec bundle install
 
-script: delivery local all
+script: chef exec bundle exec delivery local all

@@ -12,6 +12,7 @@ module Choregraphie
       @options[:create_table] ||= false
       @options[:ttl] ||= 30 # seconds
       @options[:backoff] ||= 5 # seconds
+      @options[:expires_key] ||= 'Expires'
 
       # execute given block. can be used for Aws config
       yield if block_given?
@@ -74,7 +75,7 @@ module Choregraphie
       retry_left = 5
 
       begin
-        store = Marloss::Store.new(opts[:table], opts[:hash_key], ttl: opts[:ttl])
+        store = Marloss::Store.new(opts[:table], opts[:hash_key], expires_key: opts[:expires_key], ttl: opts[:ttl])
         store.create_table if opts[:create_table]
       rescue
         (retry_left -= 1) > 0 ? retry : raise
